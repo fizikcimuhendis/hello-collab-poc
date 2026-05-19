@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.18/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.18",
+  "version": "3.0.0",
+  "id": "placeholder-app-id-v3",
+  "packageName": "com.hellocollab.enterprise.v3",
+  "developer": {
+    "name": "HelloCollab Team",
+    "website": "https://github.com/yourusername/hello-collab-poc",
+    "mpnId": "1234567890",
+    "privacyUrl": "https://github.com/yourusername/hello-collab-poc/blob/main/PRIVACY.md",
+    "termsOfUseUrl": "https://github.com/yourusername/hello-collab-poc/blob/main/TERMS.md",
+    "supportUrl": "https://github.com/yourusername/hello-collab-poc/issues"
+  },
+  "name": {
+    "short": "HelloCollab V3",
+    "full": "HelloCollab Enterprise - Tab + Message Extension + Graph API"
+  },
+  "description": {
+    "short": "Enterprise collaboration with secure Graph API integration",
+    "full": "HelloCollab V3 is an enterprise-grade application with tab, message extension, and Microsoft Graph API integration using least-privilege access principles."
+  },
+  "tabs": [
+    {
+      "entityId": "hello-collab-enterprise-tab",
+      "name": "HelloCollab Enterprise",
+      "contentUrl": "https://yourdomain.com/tabs/index.html",
+      "websiteUrl": "https://yourdomain.com",
+      "scopes": [
+        "personal",
+        "team",
+        "groupchat"
+      ]
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "bot-id-here",
+      "messageHandlers": [
+        {
+          "type": "link",
+          "value": {
+            "domains": [
+              "*.example.com"
+            ]
+          }
+        }
+      ],
+      "commands": [
+        {
+          "id": "graphSearch",
+          "type": "query",
+          "title": "Graph Search",
+          "description": "Search using Microsoft Graph",
+          "initialRun": true,
+          "parameters": [
+            {
+              "name": "query",
+              "title": "Search Query",
+              "description": "Enter search terms",
+              "inputType": "text"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "webApplicationInfo": {
+    "id": "web-app-id-here",
+    "resource": "https://graph.microsoft.com",
+    "scopes": [
+      "User.Read",
+      "Calendars.ReadWrite",
+      "ChannelMessage.Send"
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "yourdomain.com",
+    "graph.microsoft.com"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.18/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.18",
+  "version": "1.0.0",
+  "id": "placeholder-app-id-v1",
+  "packageName": "com.hellocollab.tab.v1",
+  "developer": {
+    "name": "HelloCollab Team",
+    "website": "https://github.com/yourusername/hello-collab-poc",
+    "mpnId": "1234567890",
+    "privacyUrl": "https://github.com/yourusername/hello-collab-poc/blob/main/PRIVACY.md",
+    "termsOfUseUrl": "https://github.com/yourusername/hello-collab-poc/blob/main/TERMS.md",
+    "supportUrl": "https://github.com/yourusername/hello-collab-poc/issues"
+  },
+  "name": {
+    "short": "HelloCollab V1",
+    "full": "HelloCollab - Simple Tab Application"
+  },
+  "description": {
+    "short": "Basic Teams tab for collaboration",
+    "full": "HelloCollab V1 demonstrates a simple Teams tab application with user identity and basic content display."
+  },
+  "tabs": [
+    {
+      "entityId": "hello-collab-tab",
+      "name": "HelloCollab",
+      "contentUrl": "https://yourdomain.com/tabs/index.html",
+      "websiteUrl": "https://yourdomain.com",
+      "scopes": [
+        "personal",
+        "team",
+        "groupchat"
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "yourdomain.com"
+  ]
+}

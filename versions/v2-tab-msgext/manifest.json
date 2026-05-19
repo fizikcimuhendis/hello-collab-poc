@@ -1,0 +1,89 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.18/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.18",
+  "version": "2.0.0",
+  "id": "placeholder-app-id-v2",
+  "packageName": "com.hellocollab.msgext.v2",
+  "developer": {
+    "name": "HelloCollab Team",
+    "website": "https://github.com/yourusername/hello-collab-poc",
+    "mpnId": "1234567890",
+    "privacyUrl": "https://github.com/yourusername/hello-collab-poc/blob/main/PRIVACY.md",
+    "termsOfUseUrl": "https://github.com/yourusername/hello-collab-poc/blob/main/TERMS.md",
+    "supportUrl": "https://github.com/yourusername/hello-collab-poc/issues"
+  },
+  "name": {
+    "short": "HelloCollab V2",
+    "full": "HelloCollab - Tab + Message Extension"
+  },
+  "description": {
+    "short": "Teams tab with message extension capabilities",
+    "full": "HelloCollab V2 extends V1 with message extension for rich collaboration features including search and actions."
+  },
+  "tabs": [
+    {
+      "entityId": "hello-collab-tab",
+      "name": "HelloCollab",
+      "contentUrl": "https://yourdomain.com/tabs/index.html",
+      "websiteUrl": "https://yourdomain.com",
+      "scopes": [
+        "personal",
+        "team",
+        "groupchat"
+      ]
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "bot-id-here",
+      "messageHandlers": [
+        {
+          "type": "link",
+          "value": {
+            "domains": [
+              "*.example.com"
+            ]
+          }
+        }
+      ],
+      "commands": [
+        {
+          "id": "searchCmd",
+          "type": "query",
+          "title": "Search",
+          "description": "Search for collaboration items",
+          "initialRun": true,
+          "parameters": [
+            {
+              "name": "searchQuery",
+              "title": "Search Query",
+              "description": "Enter search terms",
+              "inputType": "text"
+            }
+          ]
+        },
+        {
+          "id": "createAction",
+          "type": "action",
+          "title": "Create Item",
+          "description": "Create a collaboration item",
+          "parameters": [
+            {
+              "name": "title",
+              "title": "Title",
+              "description": "Item title",
+              "inputType": "text"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "yourdomain.com"
+  ]
+}

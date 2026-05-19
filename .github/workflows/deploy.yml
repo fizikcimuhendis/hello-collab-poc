@@ -1,0 +1,94 @@
+name: Deploy to Azure
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'versions/**'
+      - 'shared/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy (v1, v2, v3)'
+        required: true
+        default: 'v3'
+        type: choice
+        options:
+          - v1
+          - v2
+          - v3
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    name: Build & Deploy
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install --workspaces
+
+      - name: Run tests
+        run: npm run test:all
+
+      - name: Build applications
+        run: npm run build:all
+
+      - name: Set deployment version
+        run: |
+          VERSION=${{ github.event.inputs.version || 'v3' }}
+          echo "DEPLOY_VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Build Docker image for deployment
+        if: ${{ env.DEPLOY_VERSION }}
+        run: |
+          VERSION=${{ env.DEPLOY_VERSION }}
+          echo "Building image for version: $VERSION"
+          # This is a placeholder for actual Docker build
+          # Uncomment when ready to push to container registry:
+          # docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$VERSION versions/$VERSION-*/
+
+      - name: Prepare deployment manifest
+        run: |
+          echo "Preparing deployment for version: ${{ env.DEPLOY_VERSION }}"
+          # Placeholder for Azure deployment configuration
+          # Actual deployment would use bicep or ARM templates
+
+      - name: Deploy notification
+        if: always()
+        run: |
+          echo "## Deployment Status" >> $GITHUB_STEP_SUMMARY
+          echo "- Version: ${{ env.DEPLOY_VERSION }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Status: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Timestamp: $(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_STEP_SUMMARY
+
+      # Uncomment when ready for actual Azure deployment:
+      # - name: Login to Azure
+      #   uses: azure/login@v1
+      #   with:
+      #     creds: ${{ secrets.AZURE_CREDENTIALS }}
+      #
+      # - name: Deploy to Azure Container Apps
+      #   uses: azure/container-apps-deploy-action@v1
+      #   with:
+      #     appSourceUrl: ${{ github.server_url }}/${{ github.repository }}
+      #     acrName: ${{ secrets.AZURE_REGISTRY_NAME }}
+      #     acrUsername: ${{ secrets.AZURE_REGISTRY_USERNAME }}
+      #     acrPassword: ${{ secrets.AZURE_REGISTRY_PASSWORD }}

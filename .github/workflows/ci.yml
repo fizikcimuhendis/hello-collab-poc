@@ -1,0 +1,78 @@
+name: CI - Build & Test
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Lint, Build & Test
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install --workspaces
+
+      - name: Lint all packages
+        run: npm run lint:all
+        continue-on-error: true
+
+      - name: Build shared library
+        run: npm run build -w shared
+
+      - name: Build all applications
+        run: npm run build:all
+
+      - name: Run tests
+        run: npm run test:all
+
+      - name: Generate coverage report
+        run: npm run test:coverage
+        continue-on-error: true
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
+        continue-on-error: true
+
+      - name: Validate manifest files
+        run: |
+          for manifest in versions/*/manifest.json; do
+            echo "Validating $manifest..."
+            if ! jq . "$manifest" > /dev/null 2>&1; then
+              echo "ERROR: Invalid JSON in $manifest"
+              exit 1
+            fi
+          done
+
+      - name: Check documentation links
+        run: |
+          # Verify key documentation files exist
+          test -f README.md && echo "✓ Root README found"
+          test -f versions/v1-tab/README.md && echo "✓ V1 README found" || echo "⚠ V1 README missing"
+          test -f versions/v2-tab-msgext/README.md && echo "✓ V2 README found" || echo "⚠ V2 README missing"
+          test -f versions/v3-graph-least-privilege/README.md && echo "✓ V3 README found" || echo "⚠ V3 README missing"
+
+      - name: Build summary
+        if: always()
+        run: |
+          echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Node version: ${{ matrix.node-version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Status: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY

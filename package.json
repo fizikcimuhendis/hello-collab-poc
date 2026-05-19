@@ -1,0 +1,37 @@
+{
+  "name": "hello-collab-poc",
+  "version": "1.0.0",
+  "description": "Multi-version Microsoft Teams POC: V1 Tab App, V2 Tab+Message Extension, V3 Graph API Least Privilege",
+  "private": true,
+  "workspaces": [
+    "versions/v1-tab",
+    "versions/v2-tab-msgext",
+    "versions/v3-graph-least-privilege",
+    "shared"
+  ],
+  "scripts": {
+    "install:all": "npm install --workspaces",
+    "build:all": "npm run build --workspaces",
+    "lint:all": "npm run lint --workspaces",
+    "test:all": "npm run test --workspaces",
+    "test:coverage": "npm run test:coverage --workspaces",
+    "start:v1": "npm start -w versions/v1-tab",
+    "start:v2": "npm start -w versions/v2-tab-msgext",
+    "start:v3": "npm start -w versions/v3-graph-least-privilege",
+    "preview": "npm run preview --workspaces",
+    "validate": "npm run lint:all && npm run test:all && npm run build:all",
+    "postinstall": "npm run build shared"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

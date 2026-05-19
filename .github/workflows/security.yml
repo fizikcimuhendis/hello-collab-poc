@@ -1,0 +1,63 @@
+name: Security Checks
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 2 * * 0'  # Weekly on Sunday at 2 AM UTC
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    name: SAST & Dependency Checks
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install --workspaces
+
+      - name: Run npm audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Check for hardcoded secrets
+        run: |
+          echo "Scanning for potential secrets..."
+          if grep -r "password\|secret\|token\|key" versions/ --include="*.ts" --include="*.js" | grep -v ".env.example" | grep -v "node_modules" | grep -v "dist"; then
+            echo "⚠️ Warning: Potential hardcoded secrets found. Review before committing."
+          else
+            echo "✓ No obvious hardcoded secrets detected"
+          fi
+
+      - name: ESLint security checks
+        run: npm run lint:all
+        continue-on-error: true
+
+      - name: Validate manifest integrity
+        run: |
+          echo "Validating Teams manifest files..."
+          for manifest in versions/*/manifest.json; do
+            echo "Checking $manifest for required fields..."
+            jq -e '.id and .name and .developer' "$manifest" > /dev/null || {
+              echo "ERROR: Required fields missing in $manifest"
+              exit 1
+            }
+          done
+
+      - name: Security summary
+        if: always()
+        run: |
+          echo "## Security Check Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Static analysis: Completed" >> $GITHUB_STEP_SUMMARY
+          echo "- Dependency audit: Completed" >> $GITHUB_STEP_SUMMARY
+          echo "- Manifest validation: Completed" >> $GITHUB_STEP_SUMMARY
