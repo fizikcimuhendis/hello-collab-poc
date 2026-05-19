@@ -1,7 +1,5 @@
 # HelloCollab POC: Multi-Version Microsoft Teams Application
 
-[![CI - Build & Test](https://github.com/yourusername/hello-collab-poc/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/hello-collab-poc/actions/workflows/ci.yml)
-[![Security Checks](https://github.com/yourusername/hello-collab-poc/actions/workflows/security.yml/badge.svg)](https://github.com/yourusername/hello-collab-poc/actions/workflows/security.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **HelloCollab** is a proof-of-concept Microsoft Teams application showcasing enterprise collaboration features across three progressively complex versions, with emphasis on security best practices and least-privilege Microsoft Graph API access.
@@ -31,7 +29,7 @@ V3: Enterprise Graph Integration (Security & Scale)
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/hello-collab-poc.git
+git clone https://github.com/fizikcimuhendis/hello-collab-poc.git
 cd hello-collab-poc
 
 # Install all dependencies
@@ -249,25 +247,6 @@ npm run start:v3  # Starts development server on port 3000
 
 See [Deployment Guide](docs/deployment/azure-deployment.md) for full instructions.
 
-## 📞 Support & Contact
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/hello-collab-poc/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/hello-collab-poc/discussions)
-- **Email**: [your-email@example.com]
-
-## 📋 Interview Preparation Checklist
-
-Use this repo to prepare for Microsoft Collaboration Cloud Solution Architect interviews:
-
-- [ ] Understand V1 tab fundamentals and Teams manifest
-- [ ] Explain V2 message extension architecture
-- [ ] Deep dive into V3 least-privilege Graph design
-- [ ] Run demo script (30 minutes) smoothly
-- [ ] Answer permission trade-off questions
-- [ ] Discuss scalability & enterprise hardening
-- [ ] Review CI/CD & deployment strategy
-- [ ] Prepare for follow-up questions on security
-
 ## 📚 Resources
 
 - [Microsoft Teams Platform Documentation](https://learn.microsoft.com/en-us/microsoftteams/platform/)
@@ -285,7 +264,7 @@ Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 
 ## 🙏 Acknowledgments
 
-This POC was created as a portfolio and interview preparation project, demonstrating enterprise-grade Microsoft Teams development practices.
+This POC was created for demonstrating enterprise-grade Microsoft Teams development practices.
 
 ---
 
