@@ -1,6 +1,6 @@
 # Publication Checklist
 
-Use this checklist to verify HelloCollab is ready for GitHub publication and portfolio presentation.
+Use this checklist to verify HelloCollab is ready for GitHub publication.
 
 ## Code Quality
 
@@ -32,7 +32,7 @@ Use this checklist to verify HelloCollab is ready for GitHub publication and por
 - [x] Version Differences matrix (version-diff.md)
 - [x] Graph Permission Matrix with justification
 - [x] Security & Admin Guide (consent flows)
-- [x] Interview Demo Script (30-minute walkthrough)
+- [x] Demo Script (feature walkthrough)
 - [x] Deployment Guide (Azure Container Apps)
 - [x] Contributing Guidelines
 - [x] Security Policy
@@ -77,7 +77,7 @@ Use this checklist to verify HelloCollab is ready for GitHub publication and por
   ✓ docs/
     ✓ architecture/ (overview.md, version-diff.md)
     ✓ security/ (graph-permission-matrix.md, consent-and-admin-guide.md)
-    ✓ demo/ (interview-demo-script.md, demo-checklists.md)
+    ✓ demo/ (demo-script.md)
     ✓ deployment/ (azure-deployment.md)
   ✓ .github/
     ✓ workflows/ (ci.yml, security.yml, deploy.yml)
@@ -138,17 +138,6 @@ Use this checklist to verify HelloCollab is ready for GitHub publication and por
 - [x] Error messages don't leak sensitive info
 - [x] HTTPS/TLS assumed in deployment
 
-## Interview Preparation Readiness
-
-- [x] Demo script complete (30 minutes)
-- [x] Architecture narrative prepared
-- [x] Security/least-privilege talking points
-- [x] Enterprise readiness checklist
-- [x] Follow-up question answers prepared
-- [x] Code walkthrough ready (app.ts, manifest.json, tests)
-- [x] Permission matrix justification ready
-- [x] Deployment strategy explanation ready
-
 ## Pre-Publication Steps
 
 1. **Code Review**
@@ -161,7 +150,7 @@ Use this checklist to verify HelloCollab is ready for GitHub publication and por
    - [ ] `npm install --workspaces` — clean install
    - [ ] `npm run validate` — lint, test, build all pass
    - [ ] Manual testing of all three versions
-   - [ ] Demo walkthrough dry-run (30 minutes)
+   - [ ] Demo walkthrough dry-run
 
 3. **Documentation Review**
    - [ ] README is clear for first-time visitors
@@ -188,8 +177,6 @@ Use this checklist to verify HelloCollab is ready for GitHub publication and por
 
 - [ ] Share link with colleagues/mentors for review
 - [ ] Monitor GitHub issues/discussions for feedback
-- [ ] Prepare talking points for interviews
-- [ ] Update portfolio/resume with link
 - [ ] Consider blog post walkthrough
 
 ---

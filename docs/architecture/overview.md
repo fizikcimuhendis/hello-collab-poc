@@ -141,7 +141,7 @@ hello-collab-poc/
 ├── docs/                  ← Documentation
 │   ├── architecture/      ← This file + version diff
 │   ├── security/          ← Permission matrix, consent flow
-│   ├── demo/              ← Interview demo script
+│   ├── demo/              ← Demo scripts
 │   └── deployment/        ← Azure deployment guide
 │
 ├── .github/

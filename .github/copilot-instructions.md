@@ -7,7 +7,7 @@ This is a multi-version Microsoft Teams application showcasing enterprise collab
 ### Project Context
 
 - **Monorepo structure**: Shared utilities + 3 independent versions (V1, V2, V3)
-- **Purpose**: Portfolio + interview prep for Microsoft Cloud Solution Architect role
+- **Purpose**: Portfolio project demonstrating enterprise Microsoft Teams development
 - **Focus**: Security (least-privilege), enterprise readiness, progressive complexity
 - **Tech**: Node.js 20, TypeScript, Express, Jest, GitHub Actions
 
@@ -80,19 +80,6 @@ npm run start:v3
 # Run specific version tests
 npm test -w versions/v3-graph-least-privilege
 ```
-
-### Interview Demo Notes
-
-- **Duration**: 30 minutes
-- **Focus**: Architecture → V1 → V2 → V3 → Q&A
-- **Key Talking Points**:
-  - Progressive feature evolution
-  - Least-privilege security (V3)
-  - Audit logging & compliance
-  - Enterprise hardening
-  - CI/CD & deployment strategy
-
-See `docs/demo/interview-demo-script.md` for full walkthrough.
 
 ### Security Checklist (V3)
 

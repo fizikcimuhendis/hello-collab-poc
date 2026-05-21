@@ -69,7 +69,7 @@ npm run start:v3
 | [Version Differences](docs/architecture/version-diff.md) | Feature matrix across versions |
 | [Graph Permission Matrix](docs/security/graph-permission-matrix.md) | Least-privilege scope analysis |
 | [Security & Admin Guide](docs/security/consent-and-admin-guide.md) | Tenant setup and admin consent |
-| [Interview Demo Script](docs/demo/interview-demo-script.md) | 30-minute demo narrative |
+| [Demo Script](docs/demo/demo-script.md) | Feature walkthrough narrative |
 | [Contribution Guide](CONTRIBUTING.md) | How to contribute |
 
 ## 🏗️ Project Structure
@@ -84,7 +84,7 @@ hello-collab-poc/
 ├── docs/
 │   ├── architecture/        # System design docs
 │   ├── security/            # Security & compliance docs
-│   └── demo/                # Demo scripts & checklists
+│   └── demo/                # Demo scripts
 ├── .github/
 │   └── workflows/           # GitHub Actions CI/CD pipelines
 ├── .eslintrc.json          # ESLint configuration
@@ -189,13 +189,6 @@ npm run lint:all --fix
 - Message extension implementation (V2)
 - Enterprise Graph API integration (V3)
 - Least-privilege security design (V3)
-
-### Interview Preparation Scenarios
-
-- Architecture storytelling (all versions)
-- Feature evolution & backward compatibility
-- Security & compliance trade-offs (V3)
-- Enterprise readiness demonstration (V3)
 
 ### Demo Scenarios
 
