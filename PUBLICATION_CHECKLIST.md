@@ -67,7 +67,7 @@ Use this checklist to verify HelloCollab is ready for GitHub publication.
 
 ## Project Structure Verification
 
-```
+```text
 ✓ hello-collab-poc/
   ✓ versions/
     ✓ v1-tab/ (package.json, src/, manifest.json, README.md)

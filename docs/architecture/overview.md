@@ -47,7 +47,7 @@ HelloCollab is a Microsoft Teams application that enables team collaboration wit
 
 ### Request Flow: V1 (Tab)
 
-```
+```text
 Teams User
     ↓
 Teams Client loads tab
@@ -63,7 +63,7 @@ Teams Client displays tab content
 
 ### Request Flow: V2 (Message Extension)
 
-```
+```text
 Teams User
     ↓
 User uses "..." menu → "Search"
@@ -87,7 +87,7 @@ Backend handles action (edit → task module, send → card)
 
 ### Request Flow: V3 (Graph API with Least Privilege)
 
-```
+```text
 Teams User
     ↓
 User logs in (OAuth 2.0 with Teams context)
@@ -111,7 +111,7 @@ Similar for calendar, notifications, etc.
 
 ## Monorepo Structure
 
-```
+```text
 hello-collab-poc/
 │
 ├── versions/              ← Three independent versions
@@ -165,26 +165,26 @@ hello-collab-poc/
 
 ## Technology Stack
 
-| Layer              | Technologies         | Notes |
-| -----------        | -------------------- | ------- |
-| Frontend           | Teams Web Client     | Browser-based |
-| Client SDK         | @microsoft/teams-js  | Teams context, identity |
-| Runtime            | Node.js 20           | TypeScript runtime |
-| Framework          | Express.js 4.x       | HTTP server |
-| Language           | TypeScript 5.x       | Type safety |
-| Testing            | Jest 29.x            | Unit & integration tests |
-| Linting            | ESLint + Prettier    | Code quality |
-| Build              | TypeScript Compiler  | tsc → dist/ |
+| Layer              | Technologies         | Notes                     |
+| ------------------ | -------------------- | ------------------------- |
+| Frontend           | Teams Web Client     | Browser-based             |
+| Client SDK         | @microsoft/teams-js  | Teams context, identity   |
+| Runtime            | Node.js 20           | TypeScript runtime        |
+| Framework          | Express.js 4.x       | HTTP server               |
+| Language           | TypeScript 5.x       | Type safety               |
+| Testing            | Jest 29.x            | Unit & integration tests  |
+| Linting            | ESLint + Prettier    | Code quality              |
+| Build              | TypeScript Compiler  | tsc → dist/               |
 | CI/CD              | GitHub Actions       | Lint, build, test, deploy |
-| Deployment         | Azure Container Apps | Serverless containers |
-| Secrets            | Azure Key Vault      | Production credentials |
-| Logging            | Winston 3.x          | Structured logging |
-| Graph API          | @microsoft/graph     | Microsoft ecosystem (V3) |
-| Auth               | Azure AD + OAuth 2.0 | Identity platform |
+| Deployment         | Azure Container Apps | Serverless containers     |
+| Secrets            | Azure Key Vault      | Production credentials    |
+| Logging            | Winston 3.x          | Structured logging        |
+| Graph API          | @microsoft/graph     | Microsoft ecosystem (V3)  |
+| Auth               | Azure AD + OAuth 2.0 | Identity platform         |
 
 ## Data Flow Diagram
 
-```
+```text
 ┌──────────────────────────────────────────────────────────┐
 │                    Microsoft Azure AD                     │
 │  ┌─────────────┐           ┌──────────────────┐          │
@@ -281,7 +281,7 @@ interface GraphPermission {
 
 ## Error Handling
 
-```
+```text
 Request → Middleware validation
             ↓
          ✓ Auth check
@@ -304,7 +304,7 @@ Request → Middleware validation
 
 ## Security Model
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │           Least-Privilege Security Model               │
 ├────────────────────────────────────────────────────────┤

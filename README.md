@@ -61,7 +61,7 @@ npm run start:v3
 ## 📖 Documentation Structure
 
 | Document | Purpose |
-|----------|---------|
+| -------- | ------- |
 | [V1 Tab Application](versions/v1-tab/README.md) | Foundation: basic tab setup |
 | [V2 Tab + Message Extension](versions/v2-tab-msgext/README.md) | Extended features: search & actions |
 | [V3 Enterprise Graph](versions/v3-graph-least-privilege/README.md) | Advanced: secure Graph API integration |

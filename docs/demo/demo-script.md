@@ -1,6 +1,6 @@
 # HelloCollab Demo Script: 30-Minute Walkthrough
 
-**Duration**: 30 minutes  
+**Duration**: 30 minutes
 **Goal**: Demonstrate architecture, security, and enterprise readiness
 
 ## Pre-Demo Checklist (5 min before start)
@@ -32,6 +32,7 @@
 ### Section 2: V1 - Foundation (2-6 minutes)
 
 **Terminal command:**
+
 ```bash
 cd versions/v1-tab
 npm start
@@ -40,6 +41,7 @@ npm start
 **What to cover:**
 
 > "V1 is intentionally simple. It has:
+>
 > 1. **Teams manifest** — defines app ID, tabs, permissions
 > 2. **Basic Express server** — serves static content + API endpoints
 > 3. **User identity** — Teams SDK provides user context
@@ -47,12 +49,14 @@ npm start
 >
 > The manifest requires specific structure. Teams validates this at upload."
 
-**Demo**: 
+**Demo:**
+
 - Show `manifest.json` structure (focus on tabs, validDomains, permissions)
 - Show `src/app.ts` — simple endpoints
 - Hit `http://localhost:3000/api/health` in browser — show JSON response
 
 **Key points:**
+
 - Environment variables for credentials (never hardcoded)
 - Test coverage ~80%
 - No external dependencies except Express
@@ -62,6 +66,7 @@ npm start
 ### Section 3: V2 - Message Extension (6-12 minutes)
 
 **Terminal command:**
+
 ```bash
 cd ../v2-tab-msgext
 npm start
@@ -70,6 +75,7 @@ npm start
 **What to cover:**
 
 > "V2 adds a message extension on top of V1. This is where Teams collaboration really starts:
+>
 > 1. **Search command** — users can search from compose area
 > 2. **Action handlers** — edit, preview, send messages
 > 3. **Adaptive cards** — rich formatting with Teams-native controls
@@ -77,13 +83,15 @@ npm start
 >
 > The key architectural decision: message extensions are stateless here. In production, you'd wire this to a backend database."
 
-**Demo**:
+**Demo:**
+
 - Show `manifest.json` composeExtensions section
 - Show `/api/messageExtension/search` endpoint in code
 - Explain request/response contract (query params → attachments)
 - Show Adaptive card JSON in response
 
 **Key points:**
+
 - Manifest defines what Teams shows (UI for search)
 - Backend handles the logic (filtering, formatting)
 - Separation of concerns
@@ -93,6 +101,7 @@ npm start
 ### Section 4: V3 - Enterprise Graph Integration (12-25 minutes)
 
 **Terminal command:**
+
 ```bash
 cd ../v3-graph-least-privilege
 npm start
@@ -107,12 +116,14 @@ npm start
 > 3. **Audit logging**: Every Graph call is logged
 > 4. **Admin consent**: Application permissions require tenant admin approval"
 
-**Demo Part 1: Permission Matrix**
+#### Demo Part 1: Permission Matrix
+
 ```bash
 curl http://localhost:3000/api/security/permissions
 ```
 
-**What to highlight**:
+**What to highlight:**
+
 ```json
 {
   "permissions": [
@@ -128,14 +139,16 @@ curl http://localhost:3000/api/security/permissions
 
 > "Each permission has a justification. This is critical in enterprise: never request more access than you need. We explicitly don't request User.Read.All, Mail.Send, or Directory.ReadWrite.All. We ask only for what we use, and we document why."
 
-**Demo Part 2: Audit Endpoint**
+#### Demo Part 2: Audit Endpoint
+
 ```bash
 curl http://localhost:3000/api/security/audit
 ```
 
 > "We track what permissions we request, what we use, and provide an audit endpoint. In production, this hooks to Azure Monitor or a SIEM."
 
-**Demo Part 3: Graph Call with Token (Optional)**
+#### Demo Part 3: Graph Call with Token (Optional)
+
 ```bash
 curl -X POST http://localhost:3000/api/graph/me \
   -H "Content-Type: application/json" \
@@ -167,16 +180,19 @@ cat .github/workflows/security.yml
 **What to cover:**
 
 > "Every push runs:
+>
 > 1. **CI Pipeline**: Lint, build, test all three versions, validate manifests
 > 2. **Security Pipeline**: npm audit, secret scanning, manifest integrity
 > 3. **Deploy Pipeline**: (placeholder) builds Docker, pushes to ACR, deploys to Container Apps"
 
 **Show test results:**
+
 ```bash
 npm run test:all
 ```
 
 **Key points:**
+
 - ~80-90% coverage across versions
 - Tests verify endpoints, permissions, error handling
 - V3 specifically tests Graph permission enforcement
@@ -227,6 +243,6 @@ If demo crashes:
 
 ---
 
-**Last Updated**: May 19, 2026  
-**Demo Status**: Ready  
+**Last Updated**: May 19, 2026
+**Demo Status**: Ready
 **Estimated Runtime**: 30 minutes + 10 min Q&A
