@@ -11,7 +11,7 @@ Be respectful, inclusive, and professional in all interactions.
 1. Fork the repository
 2. Clone your fork: `git clone https://github.com/your-username/hello-collab-poc.git`
 3. Create a branch: `git checkout -b feature/your-feature`
-4. Install dependencies: `npm install --workspaces`
+4. Install dependencies: `npm install`
 
 ## Development Workflow
 

@@ -10,7 +10,7 @@
     "shared"
   ],
   "scripts": {
-    "install:all": "npm install --workspaces",
+    "install:all": "npm install",
     "build:all": "npm run build --workspaces",
     "lint:all": "npm run lint --workspaces",
     "test:all": "npm run test --workspaces",
@@ -20,7 +20,7 @@
     "start:v3": "npm start -w versions/v3-graph-least-privilege",
     "preview": "npm run preview --workspaces",
     "validate": "npm run lint:all && npm run test:all && npm run build:all",
-    "postinstall": "npm run build shared"
+    "postinstall": "npm run build -w shared"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

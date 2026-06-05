@@ -26,7 +26,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install --workspaces
+        run: npm install
 
       - name: Lint all packages
         run: npm run lint:all

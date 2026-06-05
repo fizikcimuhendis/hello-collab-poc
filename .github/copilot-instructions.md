@@ -61,7 +61,7 @@ This is a multi-version Microsoft Teams application showcasing enterprise collab
 
 ```bash
 # Install all dependencies
-npm install --workspaces
+npm install
 
 # Build everything
 npm run build:all

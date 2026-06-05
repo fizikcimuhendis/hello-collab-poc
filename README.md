@@ -33,7 +33,7 @@ git clone https://github.com/fizikcimuhendis/hello-collab-poc.git
 cd hello-collab-poc
 
 # Install all dependencies
-npm install --workspaces
+npm install
 
 # Build all packages
 npm run build:all
