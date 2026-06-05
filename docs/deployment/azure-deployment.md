@@ -54,7 +54,7 @@ COPY shared/ ./shared/
 COPY versions/v3-graph-least-privilege/ ./app/
 
 # Install dependencies
-RUN npm install --workspaces --production
+RUN npm install --production
 
 # Build shared library
 RUN npm run build -w shared

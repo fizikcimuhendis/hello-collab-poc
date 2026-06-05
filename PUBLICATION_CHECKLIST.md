@@ -147,7 +147,7 @@ Use this checklist to verify HelloCollab is ready for GitHub publication.
    - [ ] Test with fresh clone from GitHub
 
 2. **Final Build**
-   - [ ] `npm install --workspaces` — clean install
+   - [ ] `npm install` — clean install
    - [ ] `npm run validate` — lint, test, build all pass
    - [ ] Manual testing of all three versions
    - [ ] Demo walkthrough dry-run
@@ -212,7 +212,7 @@ npm audit
 cd /tmp
 git clone https://github.com/yourusername/hello-collab-poc.git
 cd hello-collab-poc
-npm install --workspaces
+npm install
 npm run validate
 ```
 

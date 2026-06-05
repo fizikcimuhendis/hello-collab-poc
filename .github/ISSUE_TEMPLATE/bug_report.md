@@ -24,7 +24,7 @@ body:
       label: Steps to reproduce
       description: How do you trigger the bug?
       placeholder: |
-        1. Run `npm install --workspaces`
+        1. Run `npm install`
         2. Set environment variables in `.env`
         3. Run `npm start:v3`
         4. Visit http://localhost:3000
